@@ -21,7 +21,11 @@ class DiaplayTodo extends StatelessWidget {
           appBar: AppBar(
             title: const Text("Todo"),
           ),
-          body: _buildTodoContext(),
+          body: Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
+            child: _buildTodoContext(),
+          ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
               _buildDialogNewTodo();
@@ -54,16 +58,30 @@ class DiaplayTodo extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(20.0),
       child: Center(
-        child: Text(
-          "Press FAB to add new ToDo",
-          style: Theme.of(context).textTheme.headlineMedium,
-          textAlign: TextAlign.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Instructions",
+              style: TextStyle(
+                color: Colors.purple[800],
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              "Press FAB to add new ToDo\nTap the ToDo to check it\nSwipe the Todo left to remove it",
+              style: Theme.of(context).textTheme.bodySmall,
+              textAlign: TextAlign.start,
+            ),
+          ],
         ),
       ),
     );
   }
 
-  Future<Null> _buildDialogNewTodo() async {
+  Future<void> _buildDialogNewTodo() async {
     await showDialog(
       context: context,
       builder: (context) {

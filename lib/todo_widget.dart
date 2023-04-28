@@ -22,15 +22,32 @@ class TodoItem extends StatelessWidget {
         todo.id.toString(),
       ),
       background: Container(
-        color: Colors.cyan[600],
+        padding: const EdgeInsets.only(right: 20.0),
+        decoration: BoxDecoration(
+          color: Colors.cyan[600],
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Icon(
+              Icons.highlight_remove_rounded,
+              color: Colors.purple[900],
+            )
+          ],
+        ),
       ),
       direction: DismissDirection.endToStart,
       onDismissed: (direction) => model.removeTodo(todo),
-      child: InkWell(
+      child: GestureDetector(
         onTap: () => model.toggleTodo(todo),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-          color: isChecked ? Colors.green[100] : Colors.blue[100],
+          margin: const EdgeInsets.symmetric(vertical: 5.0),
+          decoration: BoxDecoration(
+            color: isChecked ? Colors.green[100] : Colors.blue[100],
+            borderRadius: BorderRadius.circular(10.0),
+          ),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.end,
@@ -56,7 +73,7 @@ class TodoItem extends StatelessWidget {
   _buildTodoItemIcon(Todo todo) {
     return Icon(
       model.isChecked(todo) ? Icons.done : null,
-      color: Colors.blue[900],
+      color: Colors.purple[900],
     );
   }
 }

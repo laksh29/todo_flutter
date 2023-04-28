@@ -74,8 +74,7 @@ class _DialogTodoState extends State<DialogTodo> {
     return Expanded(
         child: ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.green,
+        backgroundColor: Colors.purple[900],
       ),
       child: const Text("Add"),
       onPressed: () {
@@ -94,9 +93,7 @@ class _DialogTodoState extends State<DialogTodo> {
 
   _buildCancel() {
     return Expanded(
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.white, foregroundColor: Colors.redAccent),
+      child: TextButton(
         child: const Text("Cancel"),
         onPressed: () {
           // titleCon.clear();
